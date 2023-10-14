@@ -34,6 +34,36 @@ export class AppComponent {
   user="";
   pass="";
   ans="";
-  
-  
+  checker="";
+  check(){
+    this.user=this.user.trim();
+    this.pass=this.pass.trim();
+  if(this.user=='' && this.pass==''){
+    //this.ans='both fields empty';
+    this.checker='bothNA';
+  }
+  else if(this.pass==''){
+    //this.ans='password field is empty';
+    this.checker='passNA';
+  }  
+  else if(this.user==''){
+    //this.ans='username is empty';
+    this.checker='userNA';
+  }
+  else if(this.user!='admin' && this.pass!='admin'){
+    //this.ans='both fields entered are invalid'
+    this.checker='bothInvalid';
+  }
+  else if(this.user!='admin'){
+    //this.ans='invalid username';
+    this.checker='userInvalid';
+  }
+  else if(this.pass!='admin'){
+    //this.ans='invalid password'
+    this.checker='passInvalid';
+  }
+  else{
+    //this.ans='valid login';
+    this.checker='valid';
+  }}
 }

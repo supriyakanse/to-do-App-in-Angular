@@ -39,7 +39,7 @@
 <br><br><br>
 <input type="text" placeholder="password" [(ngModel)]="pass">
 <br><br><br>
-
+<!--
 <div *ngIf="user=='' || pass=='' then elseBlock"></div>
 <ng-template #elseBlock></ng-template>
 
@@ -49,3 +49,20 @@
 <div *ngIf="user!=''&&user!='admin' || pass!=''&&pass!='admin' then wrongBlock"></div>
 <ng-template #wrongBlock><p style="color: red;">invalid login</p></ng-template>
 
+-->
+
+
+<button (click)="check()">login</button>
+<br><br><br><!--
+<div *ngIf="ans=='invalid' || ans=='na' then invalidBlock"></div>
+<ng-template #invalidBlock><p style="color: red;">invalid</p></ng-template>
+<div *ngIf="ans=='valid' then validBlock"></div>
+<ng-template #validBlock><p style="color: green;">valid</p></ng-template>
+-->
+<div *ngIf="checker=='bothNA'" style="color:red">Both fields are empty</div>
+<div *ngIf="checker=='userNA'" style="color:red">Username is empty</div>
+<div *ngIf="checker=='passNA'"style="color:red">Password is empty</div>
+<div *ngIf="checker=='userInvalid'"style="color:red">Username is invalid</div>
+<div *ngIf="checker=='passInvalid'"style="color:red">Password is invalid</div>
+<div *ngIf="checker=='bothInvalid'"style="color:red">Both fields are invalid</div>
+<div *ngIf="checker=='valid'"style="color:green">Valid login !!</div>
