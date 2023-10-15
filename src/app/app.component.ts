@@ -8,62 +8,47 @@ import { RouterTestingHarness } from '@angular/router/testing';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  /*name: string='supriya';
-  name2: string='kanse';
-  data: number=0;
-  itsvalue:string='property binding';
-  var1:number=30;
-  var2:number=20;
-  
+  toDo: string[] = [];
+  newTask = "";
+  elem="";
+  isEdit:boolean=false;
+  currentIndex:number=0;
+  add(newTask: string) {
+    if (newTask == '') {
+      alert("Please enter a task");
+    }
+    else if (newTask.startsWith(" ")) {
+      alert("task cant be blank");
+    }
+    else {
 
-  add(){
-      this.data=(this.var1+this.var2);  
+      this.toDo.push(newTask.trim());
+    }
+    this.newTask='';
   }
-  
-  consolePrint(event:Event){
-    console.log( (event.target as HTMLInputElement).value);
-  }*/
-/*
-  num1=10;
-  num2=10;
-  ans=0;
-  today='tuesday';
-  total(){
-    this.ans=this.num1+this.num2;
-  }*/
-  user="";
-  pass="";
-  ans="";
-  checker="";
-  check(){
-    this.user=this.user.trim();
-    this.pass=this.pass.trim();
-  if(this.user=='' && this.pass==''){
-    //this.ans='both fields empty';
-    this.checker='bothNA';
+  remove(){
+    if(this.toDo.length==0){
+      alert("No task to remove");  
+    }  
+    else{
+      alert(this.toDo.pop()+' Removed from toDo List');
+    }
   }
-  else if(this.pass==''){
-    //this.ans='password field is empty';
-    this.checker='passNA';
-  }  
-  else if(this.user==''){
-    //this.ans='username is empty';
-    this.checker='userNA';
+  removeSpecific(index:number){
+    this.toDo.splice(index,1);
   }
-  else if(this.user!='admin' && this.pass!='admin'){
-    //this.ans='both fields entered are invalid'
-    this.checker='bothInvalid';
+  edit(index:number){
+    this.currentIndex=index;
+    this.isEdit=true;
+    this.newTask=this.toDo[index];
   }
-  else if(this.user!='admin'){
-    //this.ans='invalid username';
-    this.checker='userInvalid';
+  save(){
+    this.toDo[this.currentIndex]=this.newTask;
+    this.isEdit=false;
+    this.newTask='';
   }
-  else if(this.pass!='admin'){
-    //this.ans='invalid password'
-    this.checker='passInvalid';
+  cancelEdit(){
+    this.isEdit=false;
+    this.newTask='';
   }
-  else{
-    //this.ans='valid login';
-    this.checker='valid';
-  }}
 }

@@ -1,68 +1,15 @@
-
-<!--
-<input type="text" value="hy" [(ngModel)]="name">
-
-{{name}}
+<input type="text" #newTaskElem [(ngModel)]="newTask" placeholder="Enter Task">
 <br><br>
-<input type="text" [value]="itsvalue">
-<br><br><br>
-<input type="text" value="sk" (click)="consolePrint($event)">
-
-
-<br><br><br>
-
-<input type="button" value="click to add" (click)="add()">
-{{data}}
-<br><br><br>
-<input type="number"  [(ngModel)]="var1">
-<input type="number" [(ngModel)]="var2">
-{{var1+var2}}
--->
-<!--
-<input type="number" [(ngModel)]="num1" >
-<input type="number" [(ngModel)]="num2">
-<button (click)="total()">add</button>
-{{ans}}
+<button *ngIf="!isEdit" (click)="add(newTaskElem.value)" style="color: white; background: green;">Add task</button>
 <br><br>
-<div *ngIf="ans>100; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>val more then 100</ng-template>
-<ng-template #elseBlock>val les than 100</ng-template>
+<!--<button (click)="remove()" style="color: white; background: red;">Remove task</button>-->
 
-
-<div [ngSwitch]="today">
-    <p *ngSwitchCase="'monday'"> this is monday</p>
-    <p *ngSwitchCase="'tuesday'">this is tuesday</p>
-    <p *ngSwitchDefault>default</p>
-</div>-->
-
-<input type="text" placeholder="username" [(ngModel)]="user">
-<br><br><br>
-<input type="text" placeholder="password" [(ngModel)]="pass">
-<br><br><br>
-<!--
-<div *ngIf="user=='' || pass=='' then elseBlock"></div>
-<ng-template #elseBlock></ng-template>
-
-<div *ngIf="user=='admin' && pass=='admin' then thenBlock"></div>
-<ng-template #thenBlock><p style="color: green;">valid login</p></ng-template>
-
-<div *ngIf="user!=''&&user!='admin' || pass!=''&&pass!='admin' then wrongBlock"></div>
-<ng-template #wrongBlock><p style="color: red;">invalid login</p></ng-template>
-
--->
-
-
-<button (click)="check()">login</button>
-<br><br><br><!--
-<div *ngIf="ans=='invalid' || ans=='na' then invalidBlock"></div>
-<ng-template #invalidBlock><p style="color: red;">invalid</p></ng-template>
-<div *ngIf="ans=='valid' then validBlock"></div>
-<ng-template #validBlock><p style="color: green;">valid</p></ng-template>
--->
-<div *ngIf="checker=='bothNA'" style="color:red">Both fields are empty</div>
-<div *ngIf="checker=='userNA'" style="color:red">Username is empty</div>
-<div *ngIf="checker=='passNA'"style="color:red">Password is empty</div>
-<div *ngIf="checker=='userInvalid'"style="color:red">Username is invalid</div>
-<div *ngIf="checker=='passInvalid'"style="color:red">Password is invalid</div>
-<div *ngIf="checker=='bothInvalid'"style="color:red">Both fields are invalid</div>
-<div *ngIf="checker=='valid'"style="color:green">Valid login !!</div>
+<button *ngIf="isEdit" (click)="save()" style="color: white; background: red;">Edit Task</button>
+<button *ngIf="isEdit" (click)="cancelEdit()" style="color: white; background: green;">Cancel</button>
+<ol>
+    <li *ngFor="let task of toDo; index as i;" style="color: blue;">
+        {{task}} 
+        <button (click)="removeSpecific(i)" style="color: white; background:red">Remove this task</button>
+        <button (click)="edit(i)" style="color: white; background: green;"> edit</button>
+    </li>
+</ol>
