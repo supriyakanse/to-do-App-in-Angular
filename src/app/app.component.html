@@ -1,15 +1,18 @@
 <input type="text" #newTaskElem [(ngModel)]="newTask" placeholder="Enter Task">
 <br><br>
-<button *ngIf="!isEdit" (click)="add(newTaskElem.value)" style="color: white; background: green;">Add task</button>
+<button *ngIf="!isEdit" (click)="add(newTaskElem.value)" class="btn btn-primary">Add task</button>
 <br><br>
 <!--<button (click)="remove()" style="color: white; background: red;">Remove task</button>-->
 
-<button *ngIf="isEdit" (click)="save()" style="color: white; background: red;">Edit Task</button>
-<button *ngIf="isEdit" (click)="cancelEdit()" style="color: white; background: green;">Cancel</button>
+<button *ngIf="isEdit" (click)="save()" class="btn btn-primary">Edit Task</button>
+<button *ngIf="isEdit" (click)="cancelEdit()" class="btn btn-primary">Cancel</button>
+
+
+
 <ol>
     <li *ngFor="let task of toDo; index as i;" style="color: blue;">
         {{task}} 
-        <button (click)="removeSpecific(i)" style="color: white; background:red">Remove this task</button>
-        <button (click)="edit(i)" style="color: white; background: green;"> edit</button>
+        <button (click)="removeSpecific(i)" class="btn btn-primary">Remove this task</button>
+        <button (click)="edit(i)" class="btn btn-primary"> edit</button>
     </li>
 </ol>
