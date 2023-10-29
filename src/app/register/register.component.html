@@ -16,27 +16,44 @@
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
       <form [formGroup]="registerform" class="needs-validation" novalidate>
-        <div class="form-group col-md-6">
-          <label for="validationCustom01">First name</label>
-          <input type="text" class="form-control col-md-6" placeholder="First name" formControlName="firstname">
-          <div class="text-danger" *ngIf="registerform.get('firstname')?.hasError('required') && formSubmitted">
-           ! First name is required.
-          </div>
+        <label>First name</label>
+        <input formControlName="firstname" class="form-control" placeholder="Enter firstname">
+    
+        <div *ngIf="this.registerform.get('firstname')?.touched">
+    
+          <small *ngIf="this.registerform.get('firstname')?.errors?.['required']" class="text-danger">enter first
+            name</small>
+          <small *ngIf="this.registerform.get('firstname')?.errors?.['minlength']" class="text-danger">firstname should have
+            minimum 3 characters</small>
+    
         </div>
-        <div class="form-group col-md-6">
-          <label for="validationCustom02">Last name</label>
-          <input type="text" class="form-control" placeholder="Last name"formControlName="lastname">
-          <div class="text-danger" *ngIf="registerform.get('lastname')?.hasError('required') && formSubmitted">
-          !  Last name is required.
-          </div>
+  
+        <label>Last name</label>
+        <input formControlName="lastname" class="form-control" placeholder="Enter lastname">
+    
+        <div *ngIf="this.registerform.get('lastname')?.touched">
+    
+          <small *ngIf="this.registerform.get('lastname')?.errors?.['required']" class="text-danger">enter last
+            name</small>
+          <small *ngIf="this.registerform.get('lastname')?.errors?.['minlength']" class="text-danger">lastname should have
+            minimum 3 characters</small>
+    
         </div>
         <div class="form-group col-md-6">
             <label for="validationCustom02">Mobile Number</label>
             <input type="text" class="form-control" placeholder="mobile number" formControlName="mobileno">
-            <div class="text-danger" *ngIf="registerform.get('mobileno')?.hasError('required') && formSubmitted">
-             ! mobile no is mandatory
+            
+            <div *ngIf="this.registerform.get('mobileno')?.touched">
+
+              <small *ngIf="this.registerform.get('mobileno')?.errors?.['required']" class="text-danger">enter mobile
+                number</small>
+        
+              <small
+                *ngIf="this.registerform.get('mobileno')?.errors?.['maxlength'] || this.registerform.get('mobileno')?.errors?.['minlength'] || this.registerform.get('mobileno')?.errors?.['pattern']"
+                class="text-danger" class="text-danger">invalid mobile number</small>
+        
             </div>
-          
+            
           </div>
         <div class="form-group col-md-6">
           <label for="validationCustomUsername">Email</label>
@@ -48,18 +65,21 @@
             <input type="email" class="form-control col-md-6"  placeholder="Email" aria-describedby="inputGroupPrepend" formControlName="email">
             
           </div>
-          <div class="text-danger" *ngIf="registerform.get('email')?.hasError('required') && formSubmitted">
-           ! mail required
-          </div>
-          <div class="text-danger" *ngIf="registerform?.get('email')?.hasError('email')">
-          ! Please enter a valid email address.
+          <div *ngIf="this.registerform.get('email')?.touched">
+
+            <small *ngIf="this.registerform.get('email')?.errors?.['required']" class="text-danger">enter mail
+              address</small>
+            <small *ngIf="this.registerform.get('email')?.errors?.['email']" class="text-danger">enter valid email
+              address</small>
+    
           </div>
         </div>
         <div class="form-group col-md-6">
           <label for="validationCustomPassword">Password</label>
           <input type="password" class="form-control" placeholder="Password" formControlName="password">
-          <div class="text-danger" *ngIf="registerform.get('password')?.hasError('required') && formSubmitted">
-           ! invalid password
+          <div *ngIf="this.registerform.get('password')?.touched">
+            <small *ngIf="this.registerform.get('password')?.errors?.['required']" class="text-danger">enter password</small>
+            <small *ngIf="this.registerform.get('password')?.errors?.['pattern']" class="text-danger">Invalid password</small>
           </div>
         </div>
         <div class="form-group mt-3 col-md-6 text-center">

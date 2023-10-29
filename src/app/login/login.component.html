@@ -60,6 +60,7 @@
           address</small>
 
       </div>
+      <small *ngIf="isErrorEmail" class="text-danger">invalid email</small>
       <!--email-->
 
       <!--gender-->
@@ -80,6 +81,7 @@
       <small *ngIf="this.loginForm.get('password')?.errors?.['pattern']" class="text-danger">Invalid password</small>
     </div>
     </div>
+    <div *ngIf="isErrorPassword" class="text-danger">invalid password</div>
     <!--password-->
     <button (click)="login()" type="submit" class="btn btn-primary">Submit</button>
   </form>

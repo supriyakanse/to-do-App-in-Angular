@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,55 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
-  constructor(private router:Router) {}
-dashboard(){
-  this.router.navigate(['register']);
+  
+    isEdit:boolean=false;
+  constructor(private router:Router,public userService:UserService) {}
+add(){
+  this.router.navigate(['addUser']);
 }
-toDo: string[] = [];
-  newTask = "";
-  elem="";
-  isEdit:boolean=false;
-  currentIndex:number=0;
-  add(newTask: string) {
-    if (newTask == '') {
-      alert("Please enter a task");
-    }
-    else if (newTask.startsWith(" ")) {
-      alert("task cant be blank");
-    }
-    else {
-
-      this.toDo.push(newTask.trim());
-    }
-    this.newTask='';
-  }
-  remove(){
-    if(this.toDo.length==0){
-      alert("No task to remove");  
-    }  
-    else{
-      alert(this.toDo.pop()+' Removed from toDo List');
-    }
-  }
-  removeSpecific(index:number){
-    this.toDo.splice(index,1);
-  }
-  edit(index:number){
-    this.currentIndex=index;
-    this.isEdit=true;
-    this.newTask=this.toDo[index];
-  }
-  save(){
-    this.toDo[this.currentIndex]=this.newTask;
-    this.isEdit=false;
-    this.newTask='';
-  }
-  cancelEdit(){
-    this.isEdit=false;
-    this.newTask='';
-  }
-
-
-
+edit(index:number){
+  this.userService.isEdit=true;
+this.userService.currindex=index;
+this.router.navigate(['addUser'])
+}
+delete(index:number){
+  this.userService.emp.splice(index,1)
+}
 }

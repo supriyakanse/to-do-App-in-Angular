@@ -1,35 +1,26 @@
-
-
-
-<h1 class="display-3 text-center">To-Do App</h1>
-
-<div class="card text-center ">
-
-  <div class="card-body">
-    <h5 class="card-title">
-      <div class="input-group">
-        <span class="input-group-text" id="addon-wrapping">✓</span>
-        <input type="text" class="form-control" placeholder="Enter task" #newTaskElem [(ngModel)]="newTask" >
-      </div>
-    </h5>
+<div class="container">
+    <button (click)="add()">add</button>
     
-    
-    <button class="btn btn-outline-primary mx-auto" *ngIf="!isEdit" (click)="add(newTaskElem.value)">Add Task</button>
-    
-<button class="btn btn-outline-primary m-2" (click)="dashboard()">logout</button>
-<button *ngIf="isEdit" (click)="save()" class="btn btn-outline-primary m-2">Edit Task</button>
-<button *ngIf="isEdit" (click)="cancelEdit()" class="btn btn-outline-danger m-2">Cancel</button>
-
-  </div>
-  <div class="card-footer text-muted">
-    <ul class="list-group">
-      <li  class="list-group-item" *ngFor="let task of toDo; index as i;">
-        {{task}} 
-        <button (click)="removeSpecific(i)" class="btn btn-outline-danger m-2 ">Remove this task</button>
-        <button (click)="edit(i)" class="btn btn-outline-primary m-2"> edit</button>
-    </li>
-    </ul>
-  </div>
+       <table class="table">
+        <thead>
+            <th>Sr No.</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>designation</th>
+            <th>Salary</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of userService.emp; index as i;">
+            <td>{{i+1}}</td>
+            <td>{{item.firstname}}</td>
+            <td>{{item.lastname}}</td>
+            <td>{{item.designation}}</td>
+            <td> {{item.salary}}</td>
+            <td><button (click)="edit(i)">edit</button></td>
+            <td><button (click)="delete(i)">delete</button></td>
+        </tr>
+    </tbody>
+      </table>
+        
+   
 </div>
-
-

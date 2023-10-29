@@ -1,0 +1,25 @@
+<div class="container">
+<h2>add employee </h2>
+    <form [formGroup]="userForm">
+    <!--name-->
+    <label>Employee firstname </label>
+    <input type="text"  formControlName="firstname" class="form-control" >
+    
+    <!--name-->
+<!--lastname-->
+    <label>Employee lastname </label>
+    <input type="text" formControlName="lastname" class="form-control">
+<!--lastname-->
+<!--designation-->
+    <label>Employee designation </label>
+    <input type="text" formControlName="designation" class="form-control">
+<!--designation-->
+    <!--salary-->
+    <label>Employee salary </label>
+    <input type="number" formControlName="salary" class="form-control">
+    <!--salary-->
+    <button *ngIf="!userService.isEdit" (click)="addemp()">add</button>
+    <button *ngIf="userService.isEdit" (click)="addedit()">add edit</button>
+    <button *ngIf="userService.isEdit" (click)="canceledit()">cancel edit</button>
+</form>
+</div>
