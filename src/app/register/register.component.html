@@ -1,0 +1,70 @@
+
+<!--<form [formGroup]="registerform">
+    <input type="text" formControlName="firstname" placeholder="firstname"><br><br>
+    <input type="text" formControlName="lastname" placeholder="lastname"><br><br>
+    <input type="text" formControlName="mobileno" placeholder="mobile number"><br><br>
+    <input type="text" formControlName="email" placeholder="email"><br><br>
+    <input type="text" formControlName="password" placeholder="password"><br><br>
+<button (click)="register()">register</button>
+
+</form>-->
+
+
+
+
+<h1 class="display-3 text-center">Registration</h1>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <form [formGroup]="registerform" class="needs-validation" novalidate>
+        <div class="form-group col-md-6">
+          <label for="validationCustom01">First name</label>
+          <input type="text" class="form-control col-md-6" placeholder="First name" formControlName="firstname">
+          <div class="text-danger" *ngIf="registerform.get('firstname')?.hasError('required') && formSubmitted">
+           ! First name is required.
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="validationCustom02">Last name</label>
+          <input type="text" class="form-control" placeholder="Last name"formControlName="lastname">
+          <div class="text-danger" *ngIf="registerform.get('lastname')?.hasError('required') && formSubmitted">
+          !  Last name is required.
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="validationCustom02">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="mobile number" formControlName="mobileno">
+            <div class="text-danger" *ngIf="registerform.get('mobileno')?.hasError('required') && formSubmitted">
+             ! mobile no is mandatory
+            </div>
+          
+          </div>
+        <div class="form-group col-md-6">
+          <label for="validationCustomUsername">Email</label>
+          <div class="input-group">
+            
+            <div class="input-group-prepend">
+              <span class="input-group-text" >@</span>
+            </div>
+            <input type="email" class="form-control col-md-6"  placeholder="Email" aria-describedby="inputGroupPrepend" formControlName="email">
+            
+          </div>
+          <div class="text-danger" *ngIf="registerform.get('email')?.hasError('required') && formSubmitted">
+           ! mail required
+          </div>
+          <div class="text-danger" *ngIf="registerform?.get('email')?.hasError('email')">
+          ! Please enter a valid email address.
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="validationCustomPassword">Password</label>
+          <input type="password" class="form-control" placeholder="Password" formControlName="password">
+          <div class="text-danger" *ngIf="registerform.get('password')?.hasError('required') && formSubmitted">
+           ! invalid password
+          </div>
+        </div>
+        <div class="form-group mt-3 col-md-6 text-center">
+            <button (click)="register()" class="btn btn-primary" type="submit">Register</button>
+          </div>
+      </form>
+    </div>
+  </div>

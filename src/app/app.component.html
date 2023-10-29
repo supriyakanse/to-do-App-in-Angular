@@ -1,8 +1,8 @@
-<input type="text" #newTaskElem [(ngModel)]="newTask" placeholder="Enter Task">
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"><input type="text" #newTaskElem [(ngModel)]="newTask" placeholder="Enter Task">
 <br><br>
 <button *ngIf="!isEdit" (click)="add(newTaskElem.value)" class="btn btn-primary">Add task</button>
 <br><br>
-<!--<button (click)="remove()" style="color: white; background: red;">Remove task</button>-->
+<button (click)="remove()" style="color: white; background: red;">Remove task</button>
 
 <button *ngIf="isEdit" (click)="save()" class="btn btn-primary">Edit Task</button>
 <button *ngIf="isEdit" (click)="cancelEdit()" class="btn btn-primary">Cancel</button>
@@ -16,3 +16,7 @@
         <button (click)="edit(i)" class="btn btn-primary"> edit</button>
     </li>
 </ol>
+
+-->
+
+<router-outlet></router-outlet>
